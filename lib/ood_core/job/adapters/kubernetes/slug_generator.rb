@@ -18,15 +18,16 @@ module SlugGenerator
 
     # LOWER_PLUS_HYPHEN: An array of lowercase alphanumeric characters plus the hyphen
     #This constant is not frozen, so it could potentially be modified
-    LOWER_PLUS_HYPHEN = ALPHANUM_LOWER + ['-']
+    LOWER_PLUS_HYPHEN = ALPHANUM_LOWER + ['-', '.']  # Added dot here
   
     #patterns  _do_not_ need to cover the length or start/end conditions,
     #which are handled separately
-    OBJECT_PATTERN = /^[a-z0-9-]+$/
-    LABEL_PATTERN = /^[a-z0-9-_]+$/i
+    OBJECT_PATTERN = /^[a-z0-9\-\.]+$/  # Added dot to the pattern
+    LABEL_PATTERN = /^[a-z0-9\-_\.]+$/i  # Added dot to the pattern
 
     #match anything that's not lowercase alphanumeric (will be stripped, replace with '-')
-    NON_ALPHANUM_PATTERN = /[^a-z0-9]+/
+    # Changed to allow dots
+    NON_ALPHANUM_PATTERN = /[^a-z0-9\.]+/
   
     #length of hash suffix
     HASH_LENGTH = 8
